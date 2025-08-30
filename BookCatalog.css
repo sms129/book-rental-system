@@ -1,0 +1,269 @@
+/* ==============================
+   Global Design Tokens
+   ============================== */
+:root{
+  --bg: #f6f7fb;
+  --card: #ffffff;
+  --text: #0f172a;
+  --muted: #64748b;
+
+  --primary: #6366f1;    /* Indigo */
+  --primary-600:#4f46e5;
+  --primary-50:#eef2ff;
+
+  --success:#22c55e;
+  --warning:#f59e0b;
+  --danger:#ef4444;
+
+  --ring:#94a3b8;
+  --border:#e5e7eb;
+  --shadow: 0 8px 24px rgba(2,6,23,0.06);
+  --radius: 14px;
+}
+
+*{ box-sizing: border-box; }
+html,body,#root{ height:100%; }
+body{
+  margin:0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+  color: var(--text);
+  background:
+    radial-gradient(1200px 600px at -10% -20%, #dbeafe 0%, transparent 60%),
+    radial-gradient(1200px 600px at 110% 120%, #ede9fe 0%, transparent 60%),
+    var(--bg);
+}
+
+/* Utility */
+.hr{ height:1px;background:var(--border); margin:16px 0; opacity:.6; }
+.badge{
+  display:inline-block; padding:4px 10px; border-radius:999px;
+  font-weight:600; font-size:12px; background:var(--primary-50); color:var(--primary-600);
+}
+
+/* ==============================
+   Page Container & Headings
+   ============================== */
+.book-catalog{
+  max-width: 1180px;
+  margin: 28px auto;
+  padding: 0 16px 40px;
+}
+
+.book-catalog h2{
+  font-size: 28px;
+  line-height: 1.2;
+  margin: 0 0 14px;
+  letter-spacing: .2px;
+}
+.book-catalog h3{
+  font-size: 18px;
+  margin: 0 0 10px;
+}
+
+/* ==============================
+   Forms – Inputs, Selects, Buttons
+   ============================== */
+input[type="text"],
+input[type="tel"],
+input[type="number"],
+input[type="date"],
+select,
+textarea{
+  appearance:none;
+  width: 100%;
+  padding: 10px 12px;
+  border: 2px solid var(--border);
+  background: #fff;
+  color: var(--text);
+  border-radius: 10px;
+  outline: none;
+  transition: border-color .18s ease, box-shadow .18s ease, transform .05s ease;
+}
+textarea{ resize: vertical; }
+
+input:focus, select:focus, textarea:focus{
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(99,102,241,0.12);
+}
+
+button{
+  appearance:none; border:0; cursor: pointer;
+  padding: 10px 14px; border-radius: 10px;
+  background: var(--primary); color:#fff; font-weight:700;
+  transition: transform .05s ease, box-shadow .2s ease, background .2s ease, opacity .2s ease;
+  box-shadow: 0 6px 18px rgba(99,102,241,.22);
+}
+button:hover{ background: var(--primary-600); transform: translateY(-1px); }
+button:active{ transform: translateY(0); }
+button:disabled{ opacity:.6; cursor:not-allowed; box-shadow:none; }
+
+/* Secondary & Danger variations (use via extra classes if needed) */
+.btn-secondary{ background:#0ea5e9; box-shadow:0 6px 18px rgba(14,165,233,.22); }
+.btn-secondary:hover{ background:#0284c7; }
+.btn-danger{ background: var(--danger); box-shadow:0 6px 18px rgba(239,68,68,.22); }
+.btn-danger:hover{ background:#dc2626; }
+.btn-outline{
+  background:#fff; color:var(--primary); border:2px solid var(--primary);
+  box-shadow:none;
+}
+.btn-outline:hover{ background:var(--primary-50); }
+
+/* Inline form rows */
+.form-row{ display:flex; flex-wrap: wrap; gap: 10px; }
+.form-row > *{ flex: 1 1 220px; }
+
+/* ==============================
+   Renter Details Bar
+   ============================== */
+.renter-details{
+  display:flex; flex-wrap: wrap; gap:10px;
+  padding: 14px; background: #fff; border:1px solid var(--border);
+  border-radius: var(--radius); box-shadow: var(--shadow); margin-bottom: 14px;
+}
+.renter-details input{ flex:1 1 220px; }
+
+/* ==============================
+   Search + Sort Row
+   ============================== */
+.book-catalog > div > input[type="text"]{
+  max-width: 260px;
+}
+.book-catalog select{
+  width: 180px;
+}
+
+/* ==============================
+   Cards Grid (Books & Recommendations)
+   ============================== */
+.book-list{
+  display:grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.book-item{
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 14px;
+  display:flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: transform .15s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.book-item:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(2,6,23,.09);
+  border-color:#dbeafe;
+}
+
+.book-item p{ margin: 0; color: var(--muted); }
+.book-item .meta{ display:flex; gap:8px; align-items:center; flex-wrap: wrap; }
+
+/* Button groups inside a card */
+.book-item .btn-row{
+  display:flex; gap:8px; flex-wrap: wrap;
+}
+.book-item input[type="date"]{
+  width:auto; min-width: 160px;
+}
+
+/* ==============================
+   Admin Controls (Add / Stock / Fee)
+   ============================== */
+.add-book, .admin-panel{
+  background:#fff; border:1px solid var(--border); border-radius: var(--radius);
+  box-shadow: var(--shadow); padding: 14px; margin: 16px 0;
+}
+.add-book h3, .admin-panel h3{ margin-top:0; }
+.add-book .form-row input{ min-width: 180px; }
+
+/* ==============================
+   Rental History
+   ============================== */
+.rental-history{
+  background:#fff; border:1px solid var(--border); border-radius: var(--radius);
+  box-shadow: var(--shadow); padding: 14px; margin-top: 12px;
+}
+.rental-history h3{ margin-top:0; }
+.rental-history > div{ padding:10px 0; border-top:1px dashed var(--border); }
+.rental-history > div:first-child{ border-top:0; }
+.rental-history p{ margin:.2rem 0; }
+
+/* ==============================
+   Overdue Section
+   ============================== */
+.overdue-books{
+  background:#fff; border:1px solid var(--border); border-radius: var(--radius);
+  box-shadow: var(--shadow); padding: 14px; margin-top: 12px;
+}
+.overdue-books h3{ margin-top:0; }
+.overdue-books p{ margin:.2rem 0; }
+.overdue-books .badge{ background:#fff7ed; color:#9a3412; border:1px solid #fdba74; }
+
+/* ==============================
+   Reviews
+   ============================== */
+.book-item textarea{ min-height: 84px; }
+.book-item small{ color: var(--muted); }
+
+/* ==============================
+   Admin Rentals Dashboard (table)
+   NOTE: inline styles exist in JSX; we override look where possible.
+   ============================== */
+.book-catalog table{
+  width:100%;
+  border-collapse: collapse;
+  background:#fff;
+  border:1px solid var(--border);
+  box-shadow: var(--shadow);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.book-catalog thead th{
+  position: sticky; top: 0;
+  background: #f8fafc !important;
+  color: #0f172a;
+  font-weight: 700 !important;
+  z-index: 1;
+}
+.book-catalog th, .book-catalog td{
+  border-bottom: 1px solid var(--border) !important;
+}
+.book-catalog tbody tr:nth-child(odd){
+  background: #fafafa;
+}
+.book-catalog tbody tr:hover{
+  background: #f1f5f9;
+}
+
+/* ==============================
+   Auth (Login / Signup) – if present
+   ============================== */
+.auth-container{
+  min-height: calc(100vh - 60px);
+  display:grid; place-items:center; padding: 24px;
+}
+.auth-card{
+  width: 100%; max-width: 420px;
+  background:#fff; border:1px solid var(--border); border-radius: var(--radius);
+  box-shadow: var(--shadow); padding: 20px;
+}
+.auth-title{ margin:0 0 10px; }
+.auth-actions{ display:flex; gap:10px; align-items:center; justify-content:space-between; }
+.auth-switch{ color:var(--muted); font-size:14px; }
+.auth-switch button{ background:transparent; color:var(--primary); box-shadow:none; padding:0; }
+
+/* ==============================
+   Responsive Tweaks
+   ============================== */
+@media (max-width: 720px){
+  .book-catalog h2{ font-size: 24px; }
+  .book-list{ grid-template-columns: 1fr; }
+  .renter-details{ padding: 12px; }
+  .book-item{ padding: 12px; }
+  .book-item input[type="date"]{ min-width: 0; width: 100%; }
+  .book-item .btn-row{ flex-direction: column; }
+}
